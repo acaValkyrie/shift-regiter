@@ -5,10 +5,12 @@ const int PIN_RCLK  =  3;
 const int PIN_SRCLK    = 4;
 
 void SetLedRow(byte _byte){
+  // SRCLK はLOWからスタート
+  digitalWrite(PIN_SRCLK, LOW);
+
   // シフトレジスタ動作させる
   // SRCLK の立ち上がりに同期
   // 多分 SRCLK が01クロック信号出しまくってそれでフリップフロップしてる
-  // オシロで見たけどクロック信号出てない...
   shiftOut(PIN_SER, PIN_SRCLK, LSBFIRST, _byte);
 
   // シフトレジスタの出力をストレージレジスタに転送
@@ -22,13 +24,16 @@ void setup() {
   pinMode( PIN_RCLK, OUTPUT );
   pinMode( PIN_SRCLK, OUTPUT );
   digitalWrite(PIN_SRCLK, LOW);
+
+  randomSeed(analogRead(7));
 }
 
-#define DT_MS 200
-
+// clock frequency 24 (https://electronicwork.shop/items/622dd0c07d1161644599dfa0)
+#define DT_MS 100
+int num_rand;
 void loop() {
-  SetLedRow(0b11110000);
-  delay(DT_MS);
-  SetLedRow(0b00001111);
+  num_rand = random(1,255);
+  byte led_row = (byte)num_rand;
+  SetLedRow(led_row);
   delay(DT_MS);
 }
