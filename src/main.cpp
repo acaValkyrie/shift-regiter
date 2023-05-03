@@ -21,11 +21,14 @@ void setup() {
   pinMode( PIN_SER, OUTPUT );
   pinMode( PIN_RCLK, OUTPUT );
   pinMode( PIN_SRCLK, OUTPUT );
+  digitalWrite(PIN_SRCLK, LOW);
 }
+
+#define DT_MS 200
 
 void loop() {
   SetLedRow(0b11110000);
-  delay(1000);
+  delay(DT_MS);
   SetLedRow(0b00001111);
-  delay(1000);
+  delay(DT_MS);
 }
