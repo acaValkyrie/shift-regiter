@@ -28,7 +28,6 @@ void setup() {
   randomSeed(analogRead(7));
 }
 
-// clock frequency 24 (https://electronicwork.shop/items/622dd0c07d1161644599dfa0)
 #define DT_MS 100
 int num_rand;
 void loop() {
