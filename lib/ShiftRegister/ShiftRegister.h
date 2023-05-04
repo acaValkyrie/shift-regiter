@@ -1,5 +1,6 @@
 #ifndef LIB_SHIFTREGISTER_SHIFTREGISTER_H_
 #define LIB_SHIFTREGISTER_SHIFTREGISTER_H_
+#include <Arduino.h>
 
 class ShiftRegister {
   private:

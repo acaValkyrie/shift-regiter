@@ -1,5 +1,4 @@
 #include "ShiftRegister.h"
-#include <Arduino.h>
 
 ShiftRegister::ShiftRegister(int _pin_ser, int _pin_rclk, int _pin_srclk){
       PIN_SER   = _pin_ser;
