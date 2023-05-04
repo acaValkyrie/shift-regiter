@@ -1,20 +1,20 @@
-#include "shift_register.h"
+#include "ShiftRegister.h"
 #include <Arduino.h>
 
-ShiftRegister::ShiftRegister(int pin_ser, int pin_rclk, int pin_srclk){
-      PIN_SER   = pin_ser;
-      PIN_RCLK  = pin_rclk;
-      PIN_SRCLK = pin_srclk;
+ShiftRegister::ShiftRegister(int _pin_ser, int _pin_rclk, int _pin_srclk){
+      PIN_SER   = _pin_ser;
+      PIN_RCLK  = _pin_rclk;
+      PIN_SRCLK = _pin_srclk;
 }
 
-void ShiftRegister::Setup(){
+void ShiftRegister::setup(){
   pinMode( PIN_SER, OUTPUT );
   pinMode( PIN_RCLK, OUTPUT );
   pinMode( PIN_SRCLK, OUTPUT );
   digitalWrite(PIN_SRCLK, LOW);
 }
 
-void ShiftRegister::SetLedRow(byte _byte){
+void ShiftRegister::setLedRow(byte _byte){
   // SRCLK はLOWからスタート
   digitalWrite(PIN_SRCLK, LOW);
 
